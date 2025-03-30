@@ -13,7 +13,8 @@
     Y = +10 walkSpeed
     U = -10 walkSpeed
 ]]--
-
+if getgenv().SpeedEnabled == true then getgenv().SpeedEnabled = false game:GetService("Players).LocalPlayer.PlayerGui.OIYIRJghoigmw39IERWJT2:Destroy() return end
+    getgenv().SpeedEnabled = true
     local enable = Enum.KeyCode.E -- obviously you gotta put Enum.KeyCode.(key), thats why its formatted this way
     local reset = Enum.KeyCode.T
     local plusten = Enum.KeyCode.Y
@@ -24,8 +25,9 @@
     local uis = game:GetService("UserInputService")
 
         local screenGui = Instance.new("ScreenGui")
+        screenGui.Name = "OIYIRJghoigmw39IERWJT2"
         screenGui.ResetOnSpawn = false
-        screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+        screenGui.Parent = game:GetService("Players").LocalPlayer.("PlayerGui")
 
         local frame = Instance.new("Frame")
         frame.Size = UDim2.new(0, 150, 0, 50)
