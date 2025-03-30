@@ -17,6 +17,8 @@ L: Toggle auto fish
 all this code is unobfuscated so you can change these keybinds or put them into a gui i dont care
 
 ]]
+getgenv().Fisch = script
+print(getgenv().Fisch)
 local gui = game:GetService('Players').LocalPlayer.PlayerGui
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local fishing = false
