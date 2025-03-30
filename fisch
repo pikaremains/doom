@@ -1,0 +1,83 @@
+-- open source fisch script, made originally by doombringer2006
+
+-- undetectable, no guis added and everything is nearly impossible to detect (game anticheat updates can change this)
+
+--antiskidmaster6969, gotta know the basics man
+
+-- sorry if this is unoptimized i made it in like an hour LOL
+
+-- first error is a false flag doesn't affect the script
+
+-- AUTOSHAKE AND INSTANT CATCH ARE AUTOMATICALLY ENABLED, MANUALLY DISABLE IN SCRIPT
+
+--[[ KEYBINDS: 
+
+Q: Perfect cast (if you dont want a perfect change the code or manually click) 
+L: Toggle auto fish
+all this code is unobfuscated so you can change these keybinds or put them into a gui i dont care
+
+]]
+local gui = game:GetService('Players').LocalPlayer.PlayerGui
+local VirtualInputManager = game:GetService('VirtualInputManager')
+local fishing = false
+
+
+gui.ChildAdded:Connect(function(child)
+    if child:IsA('Sound') then
+        local ohNumber1 = 100
+        local ohBoolean2 = false
+
+        game:GetService('ReplicatedStorage').events['reelfinished ']:FireServer(ohNumber1, ohBoolean2)
+    elseif child:IsA('ScreenGui') then
+        if child.Name == 'shakeui' then
+            task.wait(0.2)
+            repeat
+                task.wait(0.025)
+                local button = child.safezone:WaitForChild('button')
+                local pos = button.AbsolutePosition
+                local size = button.AbsoluteSize
+                VirtualInputManager:SendMouseButtonEvent(
+                    pos.X + size.X / 2,
+                    pos.Y + size.Y / 2,
+                    0,
+                    true,
+                    game:GetService('Players').LocalPlayer,
+                    0
+                )
+                VirtualInputManager:SendMouseButtonEvent(
+                    pos.X + size.X / 2,
+                    pos.Y + size.Y / 2,
+                    0,
+                    false,
+                    game:GetService('Players').LocalPlayer,
+                    0
+                )
+            until not button
+        end
+    end
+end)
+local UserInputService = game:GetService('UserInputService')
+
+local function onInputBegan(input, _gameProcessed)
+    if input.KeyCode == Enum.KeyCode.Q then
+        local ohNumber1 = 100 -- perfect catch thing, make lower than 100 to change
+        local ohNumber2 = 1
+        
+        game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Tool').events.cast:FireServer(ohNumber1, ohNumber2)
+    end
+    if input.KeyCode == Enum.KeyCode.L then
+        if fishing == true then
+            fishing = false
+        else
+            fishing = true
+            repeat
+                task.wait(0.6)
+                local ohNumber1 = 70 -- less power for autofish because yall are definitely using it while in a boat
+                local ohNumber2 = 1
+
+                game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Tool').events.cast:FireServer(ohNumber1, ohNumber2)
+            until fishing == false
+        end
+    end
+end
+UserInputService.InputBegan:Connect(onInputBegan)
