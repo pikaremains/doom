@@ -13,7 +13,7 @@
     Y = +10 walkSpeed
     U = -10 walkSpeed
 ]]--
-if getgenv().SpeedEnabled == true then getgenv().SpeedEnabled = false game:GetService("Players).LocalPlayer.PlayerGui.OIYIRJghoigmw39IERWJT2:Destroy() return end
+if getgenv().SpeedEnabled == true then getgenv().SpeedEnabled = false game:GetService("Players").LocalPlayer.PlayerGui.OIYIRJghoigmw39IERWJT2:Destroy() return end
     getgenv().SpeedEnabled = true
     local enable = Enum.KeyCode.E -- obviously you gotta put Enum.KeyCode.(key), thats why its formatted this way
     local reset = Enum.KeyCode.T
